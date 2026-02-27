@@ -1,0 +1,83 @@
+{
+  "class_stats": {
+    "bbox_counter": {
+      "traffic sign": 34908,
+      "traffic light": 26885,
+      "car": 102506,
+      "rider": 649,
+      "motor": 452,
+      "person": 13262,
+      "bus": 1597,
+      "truck": 4245,
+      "bike": 1007,
+      "train": 15
+    },
+    "image_counter": {
+      "traffic light": 5653,
+      "traffic sign": 8221,
+      "rider": 515,
+      "car": 9879,
+      "motor": 334,
+      "person": 3220,
+      "bus": 1242,
+      "truck": 2689,
+      "bike": 578,
+      "train": 14
+    }
+  },
+  "attribute_stats": {
+    "time_of_day": {
+      "daytime": 5258,
+      "night": 3929,
+      "dawn/dusk": 778,
+      "undefined": 35
+    },
+    "weather": {
+      "overcast": 1239,
+      "clear": 5346,
+      "undefined": 1157,
+      "rainy": 738,
+      "snowy": 769,
+      "partly cloudy": 738,
+      "foggy": 13
+    },
+    "scene": {
+      "city street": 6112,
+      "highway": 2499,
+      "tunnel": 27,
+      "residential": 1253,
+      "parking lot": 49,
+      "gas stations": 7,
+      "undefined": 53
+    }
+  },
+  "annotation_anomalies": {
+    "tiny_boxes": {
+      "car": 7,
+      "person": 2,
+      "traffic sign": 4,
+      "traffic light": 3
+    },
+    "extreme_aspect_ratio": {
+      "car": 22,
+      "traffic sign": 13,
+      "traffic light": 8,
+      "person": 7,
+      "bike": 1,
+      "truck": 1,
+      "train": 1
+    },
+    "empty_images": 0
+  },
+  "bbox_area_quantiles": {
+    "p1": 68.50316195870347,
+    "p5": 117.15351744113892,
+    "p10": 160.25873099388855,
+    "p25": 305.1504487251345,
+    "p50": 809.5827888350823,
+    "p75": 2970.3116944943795,
+    "p90": 12652.254266483174,
+    "p95": 31714.916615028076,
+    "p99": 116208.95363122332
+  }
+}

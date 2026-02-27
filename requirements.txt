@@ -1,0 +1,17 @@
+# Core ML / Deep Learning
+torch==2.1.2
+torchvision==0.16.2
+
+# Computer Vision
+opencv-python==4.13.0.92
+ultralytics==8.4.14
+
+# Data & Visualization
+numpy==1.26.4
+matplotlib==3.10.8
+
+# Dashboard
+streamlit==1.54.0
+
+# Utilities
+tqdm==4.67.3
