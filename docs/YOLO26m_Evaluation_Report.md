@@ -59,7 +59,7 @@ This report presents a comprehensive evaluation of the **YOLO26m** (medium) mode
 
 > **Observation:** All three losses are still decreasing monotonically at epoch 5 — the model is clearly **under-trained** and would benefit substantially from more epochs.
 
-![Training Curves](report_assets/results.png)
+![Training Curves](../report_assets/results.png)
 
 ### 3.1 Exact Commands Used
 
@@ -163,9 +163,9 @@ The following image pairs show ground-truth annotations (left) and model predict
 
 | Ground Truth | Predictions |
 |---|---|
-| ![Batch 0 Labels](report_assets/val_batch0_labels.jpg) | ![Batch 0 Preds](report_assets/val_batch0_pred.jpg) |
-| ![Batch 1 Labels](report_assets/val_batch1_labels.jpg) | ![Batch 1 Preds](report_assets/val_batch1_pred.jpg) |
-| ![Batch 2 Labels](report_assets/val_batch2_labels.jpg) | ![Batch 2 Preds](report_assets/val_batch2_pred.jpg) |
+| ![Batch 0 Labels](../report_assets/val_batch0_labels.jpg) | ![Batch 0 Preds](../report_assets/val_batch0_pred.jpg) |
+| ![Batch 1 Labels](../report_assets/val_batch1_labels.jpg) | ![Batch 1 Preds](../report_assets/val_batch1_pred.jpg) |
+| ![Batch 2 Labels](../report_assets/val_batch2_labels.jpg) | ![Batch 2 Preds](../report_assets/val_batch2_pred.jpg) |
 
 **Visual observations:**
 - **Cars in the foreground/midground** are consistently detected with high confidence. Bounding boxes are tight.
@@ -183,17 +183,17 @@ Below are curated side-by-side images (LEFT = Ground Truth in **green**, RIGHT =
 
 The `car` class is the model's strongest category (AP@50 = 0.798). Most cars — especially in the foreground and midground — are detected with tight bounding boxes:
 
-![Success Car 0](report_assets/failure_analysis/success_car_0.jpg)
-![Success Car 1](report_assets/failure_analysis/success_car_1.jpg)
-![Success Car 2](report_assets/failure_analysis/success_car_2.jpg)
+![Success Car 0](../report_assets/failure_analysis/success_car_0.jpg)
+![Success Car 1](../report_assets/failure_analysis/success_car_1.jpg)
+![Success Car 2](../report_assets/failure_analysis/success_car_2.jpg)
 
 #### Where the Model Fails — Train Class (0% Recall)
 
 The `train` class has **zero successful detections** across all 15 ground-truth instances (14 images). The model simply never predicts "train" — every GT train box is completely missed. Note the green GT boxes on the left that have no corresponding red prediction boxes on the right:
 
-![Failure Train 0](report_assets/failure_analysis/failure_train_0.jpg)
-![Failure Train 1](report_assets/failure_analysis/failure_train_1.jpg)
-![Failure Train 2](report_assets/failure_analysis/failure_train_2.jpg)
+![Failure Train 0](../report_assets/failure_analysis/failure_train_0.jpg)
+![Failure Train 1](../report_assets/failure_analysis/failure_train_1.jpg)
+![Failure Train 2](../report_assets/failure_analysis/failure_train_2.jpg)
 
 > **Key observation:** The train objects are actually **large** in the images (avg. relative area = 0.032), so the failure is purely due to having only 15 training examples — far below the minimum needed for the model to learn this class.
 
@@ -201,39 +201,39 @@ The `train` class has **zero successful detections** across all 15 ground-truth 
 
 Traffic lights are 86% small objects. In crowded intersection scenes with many tiny lights, the model misses several of them:
 
-![Failure Small TL 0](report_assets/failure_analysis/failure_small_tl_0.jpg)
-![Failure Small TL 1](report_assets/failure_analysis/failure_small_tl_1.jpg)
-![Failure Small TL 2](report_assets/failure_analysis/failure_small_tl_2.jpg)
+![Failure Small TL 0](../report_assets/failure_analysis/failure_small_tl_0.jpg)
+![Failure Small TL 1](../report_assets/failure_analysis/failure_small_tl_1.jpg)
+![Failure Small TL 2](../report_assets/failure_analysis/failure_small_tl_2.jpg)
 
 #### Where the Model Fails — Rare Classes (Rider, Motor, Bike)
 
 These three classes have low instance counts and the model frequently misses them, especially at smaller scales:
 
 **Rider** (649 instances, AP@50 = 0.445):
-![Failure Rider 0](report_assets/failure_analysis/failure_rider_0.jpg)
-![Failure Rider 1](report_assets/failure_analysis/failure_rider_1.jpg)
+![Failure Rider 0](../report_assets/failure_analysis/failure_rider_0.jpg)
+![Failure Rider 1](../report_assets/failure_analysis/failure_rider_1.jpg)
 
 **Motor** (452 instances, AP@50 = 0.410):
-![Failure Motor 0](report_assets/failure_analysis/failure_motor_0.jpg)
-![Failure Motor 1](report_assets/failure_analysis/failure_motor_1.jpg)
+![Failure Motor 0](../report_assets/failure_analysis/failure_motor_0.jpg)
+![Failure Motor 1](../report_assets/failure_analysis/failure_motor_1.jpg)
 
 **Bike** (1,007 instances, AP@50 = 0.475):
-![Failure Bike 0](report_assets/failure_analysis/failure_bike_0.jpg)
-![Failure Bike 1](report_assets/failure_analysis/failure_bike_1.jpg)
+![Failure Bike 0](../report_assets/failure_analysis/failure_bike_0.jpg)
+![Failure Bike 1](../report_assets/failure_analysis/failure_bike_1.jpg)
 
 #### Where the Model Fails — Night / Low-Light Scenes
 
 In dark scenes (mean pixel brightness < 60), the model's detection count drops noticeably vs. ground truth:
 
-![Failure Night 0](report_assets/failure_analysis/failure_night_0.jpg)
-![Failure Night 1](report_assets/failure_analysis/failure_night_1.jpg)
-![Failure Night 2](report_assets/failure_analysis/failure_night_2.jpg)
+![Failure Night 0](../report_assets/failure_analysis/failure_night_0.jpg)
+![Failure Night 1](../report_assets/failure_analysis/failure_night_1.jpg)
+![Failure Night 2](../report_assets/failure_analysis/failure_night_2.jpg)
 
 
 ### 5.4 Confusion Matrix Analysis
 
-![Confusion Matrix](report_assets/confusion_matrix.png)
-![Normalized Confusion Matrix](report_assets/confusion_matrix_normalized.png)
+![Confusion Matrix](../report_assets/confusion_matrix.png)
+![Normalized Confusion Matrix](../report_assets/confusion_matrix_normalized.png)
 
 **Key inter-class confusions observed:**
 - **person ↔ rider**: Some rider instances get classified as persons (both are human-shaped; rider is distinguished by being on a bike/motorcycle).
@@ -244,10 +244,10 @@ In dark scenes (mean pixel brightness < 60), the model's detection count drops n
 
 | Curve | Plot |
 |---|---|
-| **Precision–Recall** | ![PR Curve](report_assets/BoxPR_curve.png) |
-| **Precision vs. Confidence** | ![P Curve](report_assets/BoxP_curve.png) |
-| **Recall vs. Confidence** | ![R Curve](report_assets/BoxR_curve.png) |
-| **F1 vs. Confidence** | ![F1 Curve](report_assets/BoxF1_curve.png) |
+| **Precision–Recall** | ![PR Curve](../report_assets/BoxPR_curve.png) |
+| **Precision vs. Confidence** | ![P Curve](../report_assets/BoxP_curve.png) |
+| **Recall vs. Confidence** | ![R Curve](../report_assets/BoxR_curve.png) |
+| **F1 vs. Confidence** | ![F1 Curve](../report_assets/BoxF1_curve.png) |
 
 **Observations from PR/F1 curves:**
 - The **PR curve for `car`** has the largest area under the curve, confirming it as the best-performing class.
